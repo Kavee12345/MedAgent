@@ -1,4 +1,6 @@
-from pydantic import BaseModel
+from dataclasses import Field
+from pydantic import BaseModel,Field
+from typing import List
 from datetime import datetime
 import uuid
 from typing import Literal
@@ -25,6 +27,7 @@ class MessageOut(BaseModel):
     escalation_level: str | None
     confidence_score: float | None
     recommendations: list[str] | None
+    follow_up_questions: list[str] | None = None
     disclaimer: str | None
     created_at: datetime
 
@@ -50,5 +53,6 @@ class MedicalResponse(BaseModel):
     escalation_level: Literal["none", "mild", "urgent", "emergency"] = "none"
     confidence: float = 0.8
     recommendations: list[str] = []
+    follow_up_questions: List[str] = Field(default_factory=list) # <-- ADD THIS LINE
     disclaimer: str = "This information is for educational purposes only. Always consult a qualified healthcare professional for medical advice."
     sources: list[str] = []

@@ -41,6 +41,10 @@ You MUST respond in valid JSON matching this exact schema:
   "escalation_level": "<none|mild|urgent|emergency>",
   "confidence": <0.0-1.0>,
   "recommendations": ["<actionable recommendation 1>", "<recommendation 2>"],
+  "follow_up_questions": [
+    "<specific question 1 to narrow down symptoms or history>", 
+    "<specific question 2 to assess severity or context>"
+  ],
   "disclaimer": "<appropriate medical disclaimer>",
   "sources": ["<document name or 'general knowledge'>"]
 }

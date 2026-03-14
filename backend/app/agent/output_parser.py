@@ -33,6 +33,7 @@ def parse_medical_response(raw_text: str, user_message: str = "") -> MedicalResp
             "escalation_level": "none",
             "confidence": 0.5,
             "recommendations": ["Please consult a healthcare professional for personalized advice."],
+            "follow_up_questions": [],  # Added to support the new schema
             "disclaimer": "This information is for educational purposes only. Always consult a qualified healthcare professional.",
             "sources": [],
         }
@@ -48,7 +49,9 @@ def parse_medical_response(raw_text: str, user_message: str = "") -> MedicalResp
             "This information is for educational purposes only and does not constitute medical advice. "
             "Always consult a qualified healthcare professional for diagnosis and treatment."
         )
-
+    # Ensure follow_up_questions is present in case the LLM forgot to include it in a valid JSON response
+    if "follow_up_questions" not in parsed:
+        parsed["follow_up_questions"] = []
     return MedicalResponse(**parsed)
 
 

@@ -43,6 +43,7 @@ export interface Message {
   escalation_level: EscalationLevel | null
   confidence_score: number | null
   recommendations: string[] | null
+  follow_up_questions: string[] | null;
   disclaimer: string | null
   created_at: string
 }
@@ -63,6 +64,7 @@ export interface MedicalResponse {
   escalation_level: EscalationLevel
   confidence: number
   recommendations: string[]
+  follow_up_questions: string[];
   disclaimer: string
   sources: string[]
 }

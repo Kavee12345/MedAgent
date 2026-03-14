@@ -53,13 +53,13 @@ class Message(Base):
     )
     role: Mapped[str] = mapped_column(String(20), nullable=False)  # user | assistant
     content: Mapped[str] = mapped_column(Text, nullable=False)
-
     # Structured assistant output (null for user messages)
     escalation_level: Mapped[str | None] = mapped_column(
         String(20)
     )  # none | mild | urgent | emergency
     confidence_score: Mapped[float | None] = mapped_column(Float)
     recommendations: Mapped[list | None] = mapped_column(JSONB)
+    follow_up_questions: Mapped[list | None] = mapped_column(JSONB)
     disclaimer: Mapped[str | None] = mapped_column(Text)
     retrieved_chunk_ids: Mapped[list | None] = mapped_column(JSONB)
     token_count: Mapped[int | None] = mapped_column(Integer)

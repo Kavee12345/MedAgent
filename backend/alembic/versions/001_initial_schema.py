@@ -126,6 +126,7 @@ def upgrade() -> None:
         sa.Column("escalation_level", sa.String(20)),
         sa.Column("confidence_score", sa.Float),
         sa.Column("recommendations", postgresql.JSONB),
+        sa.Column("follow_up_questions", postgresql.JSONB), # <--- ADDED HERE
         sa.Column("disclaimer", sa.Text),
         sa.Column("retrieved_chunk_ids", postgresql.JSONB),
         sa.Column("token_count", sa.Integer),
